@@ -8,17 +8,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class CardOrderTest {
     private WebDriver driver;
 
 
     @BeforeAll
-    static void setUpAll() {
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+    static void setupClass() {
+        WebDriverManager.chromedriver().setup();
     }
 
     @BeforeEach
-            void setUp() {
+    void setUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
@@ -28,9 +30,9 @@ public class CardOrderTest {
 
     @AfterEach
     void tearDown() {
-        driver.quit();
-        driver = null;
+        if (driver != null) {
+            driver.quit();
+        }
     }
-
 
 }
