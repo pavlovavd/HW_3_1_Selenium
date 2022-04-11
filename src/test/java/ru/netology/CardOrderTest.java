@@ -32,10 +32,5 @@ public class CardOrderTest {
         driver = null;
     }
 
-    @Test
-    public void firstTest() {
-        driver.get("http://localhost:9999");
-    }
-
 
 }
